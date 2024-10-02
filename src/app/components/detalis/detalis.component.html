@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="banner"
+    [ngStyle]="{ 'background-image': 'radial-gradient(circle, rgba(2, 0, 36, 0.03125) 0%, rgba(2, 0, 36, 0.11528361344537819) 4%, rgba(18, 18, 18, 1) 100%), url(https://image.tmdb.org/t/p/original/' + banner + ')' }">
+
+
+    <div class="inform">
+      <div class="title">
+        <h1>{{title}}</h1>
+      </div>
+
+      <div class="btns">
+        <button class="trailer" (click)="trailer(id)">Watch trailer <i style="font-size: 16px;"
+            class="fa-solid fa-play"></i></button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <main>
+    <div class="description">
+      <h1>Description</h1>
+      <span>
+        {{description}}
+      </span>
+    </div>
+    <div class="elenco">
+      <h1>Elenco</h1>
+
+      <div class="dados" *ngFor="let elenco of casts">
+        <img src="https://image.tmdb.org/t/p/original/{{ elenco.profile_path}}" alt="">
+        {{elenco.name}}
+      </div>
+    </div>
+  </main>
+
+</div>

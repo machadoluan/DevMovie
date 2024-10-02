@@ -1,0 +1,26 @@
+<header [ngClass]="{'scrolled': isScroll}">
+
+  <div class="first" >
+    <div class="logo">
+      <a href="/"><img src="logo.png" alt=""></a>
+    </div>
+    <nav>
+      <li>
+        <a href="">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/series">Series</a>
+        <a href="/kids">kids</a>
+      </li>
+    </nav>
+  </div>
+
+  <div class="secundary">
+    <div class="search" #myDiv >
+      <i class="fa-solid fa-magnifying-glass" (click)="search()"></i>
+      <input #input type="text" name="search" id="search" placeholder="Search" (keyup)="onSearch(input)">
+    </div>
+    <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+  </div>
+
+</header>

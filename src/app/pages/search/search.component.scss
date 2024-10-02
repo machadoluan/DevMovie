@@ -1,0 +1,22 @@
+.container {
+  color: white;
+  .movies {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 120px;
+    display: flex;
+    gap: 2rem ;
+    flex-wrap: wrap;
+
+    img {
+      width: 120px;
+      border-radius: 10px;
+      transition: transform 500ms ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

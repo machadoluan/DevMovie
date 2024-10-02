@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="cartegory">
+    <h1>{{categoryName}}</h1>
+  </div>
+
+  <div class="movies">
+    <img *ngFor="let b of movies" (click)="detalis(b)" src="https://image.tmdb.org/t/p/original/{{ b.poster_path}}" alt="">
+  </div>
+</div>

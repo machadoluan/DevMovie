@@ -1,0 +1,139 @@
+<div class="container">
+  <!-- <app-header></app-header> -->
+  <div class="carousel-container">
+    <div class="background" *ngFor="let b of bannerMovie; let i = index"
+      [ngStyle]="{ 'background-image': 'radial-gradient(circle, rgba(2, 0, 36, 0.03125) 0%, rgba(2, 0, 36, 0.11528361344537819) 4%, rgba(18, 18, 18, 1) 100%), url(https://image.tmdb.org/t/p/original/' + b.backdrop_path + ')' }"
+      [ngClass]="{'active': i === currentIndex}">
+
+      <div class="inform">
+        <div class="title">
+          <h1>{{b.original_title || b.original_name}}</h1>
+        </div>
+
+        <div class="description">
+          <span>{{b.overview}}</span>
+        </div>
+
+        <div class="btns">
+          <button class="trailer" (click)="trailer(b.id)">Watch trailer <i style="font-size: 16px;" class="fa-solid fa-play"></i></button>
+          <button class="detalis" (click)="detalis(b)">Detalis <i class="fa-solid fa-chevron-right"
+              aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <main>
+
+    <section class="trending">
+      <div class="title-section">
+        <h1>Trending Movies</h1>
+        <span (click)="seeAll('Trending Movies', trendingApiData)">See all</span>
+      </div>
+      <div class="back" (click)="scrollLeft(0)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+        <img *ngFor="let t of trendingApiData" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+
+      <div class="next" (click)="scrollRight(0)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+    <section class="action">
+      <div class="title-section">
+        <h1>Action Movies</h1>
+        <span (click)="seeAll('Action Movies', actionMovie)">See all</span>
+
+      </div>
+      <div class="back" (click)="scrollLeft(1)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+        <img *ngFor="let t of actionMovie" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+      <div class="next" (click)="scrollRight(1)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+    <section class="adventure">
+
+      <div class="title-section">
+        <h1>Adventure Movies</h1>
+        <span (click)="seeAll('Adventure Movies', adventureMovies)">See all</span>
+
+      </div>
+      <div class="back" (click)="scrollLeft(2)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+        <img *ngFor="let t of adventureMovies" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+      <div class="next" (click)="scrollRight(2)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+    <section class="animation">
+
+      <div class="title-section">
+        <h1>Animation Movies</h1>
+        <span (click)="seeAll('Animation Movies', animationMovies)">See all</span>
+
+      </div>
+      <div class="back" (click)="scrollLeft(3)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+        <img *ngFor="let t of animationMovies" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+
+      </div>
+      <div class="next" (click)="scrollRight(3)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+    <section class="comedy">
+      <div class="title-section">
+        <h1>Comedy Movies</h1>
+        <span (click)="seeAll('Comedy Movies', comedyMovies)">See all</span>
+
+      </div>
+      <div class="back" (click)="scrollLeft(4)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+
+        <img *ngFor="let t of comedyMovies" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+      <div class="next" (click)="scrollRight(4)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+    <section class="science">
+
+      <div class="title-section">
+        <h1>Science Movies</h1>
+        <span (click)="seeAll('Science Movies', scienceMovies)">See all</span>
+
+      </div>
+
+      <div class="back" (click)="scrollLeft(6)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+
+        <img *ngFor="let t of scienceMovies" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+      <div class="next" (click)="scrollRight(6)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+
+    </section>
+
+
+    <section class="thriller">
+      <div class="title-section">
+        <h1>Thriller Movies</h1>
+        <span (click)="seeAll('Thriller Movies', thrillerMovies)">See all</span>
+
+      </div>
+      <div class="back" (click)="scrollLeft(7)"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></div>
+      <div class="movies" #carousel>
+
+        <img *ngFor="let t of thrillerMovies" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+          class="image-movie" (click)="detalis(t)">
+      </div>
+      <div class="next" (click)="scrollRight(7)"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </section>
+
+  </main>
+</div>

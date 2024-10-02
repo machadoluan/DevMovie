@@ -1,0 +1,11 @@
+<div class="container">
+  <!-- <app-header></app-header> -->
+
+  <div class="movies">
+    <img *ngFor="let t of movie" src="https://image.tmdb.org/t/p/original/{{ t.poster_path}}" alt=""
+      class="image-movie" (click)="detalis(t)">
+  </div>
+
+  <span>{{errorSearch}}</span>
+
+</div>
