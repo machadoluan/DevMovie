@@ -7,6 +7,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DetalisComponent } from '../../components/detalis/detalis.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MoreMoviesComponent } from '../../components/more-movies/more-movies.component';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TrailerComponent } from '../../components/trailer/trailer.component';
 
 
 @Component({
@@ -36,10 +38,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   thrillerMovies: any[] = [];
   trailerKey: any;
   bannerMovie: any[] = [];
+  youtubeUrl: SafeResourceUrl = '';
+
 
   constructor(
     private service: MovieApiService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) { }
 
 
@@ -50,6 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.ApiDataMovies()
     console.log('movies', this.bannerMovie)
+
   }
 
 
@@ -168,10 +174,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       result.results.forEach((element: any) => {
         if (element.type === "Trailer") {
           this.trailerKey = element.key;
+          this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.trailerKey}?autoplay=1&mute=1`);
         }
       });
-      console.log(this.trailerKey)
-      window.open(`https://www.youtube.com/watch?v=${this.trailerKey}`, '_blank')
+      console.log(this.youtubeUrl)
+
+      this.dialog.open(TrailerComponent, {
+        maxWidth: 1000,
+        maxHeight: 700,
+        data: {
+          youtubeUrl: this.youtubeUrl
+        }
+      })
     })
   }
 }

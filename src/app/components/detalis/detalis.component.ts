@@ -39,12 +39,12 @@ export class DetalisComponent implements OnInit {
     this.MovieCast()
   }
 
-  MovieCast(){
+  MovieCast() {
     this.service.getMovieCast(this.id).subscribe((result) => {
 
       this.casts = result.cast;
 
-       console.log('cast', this.casts)
+      console.log('cast', this.casts)
 
     })
   }

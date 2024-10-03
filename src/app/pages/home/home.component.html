@@ -5,6 +5,8 @@
       [ngStyle]="{ 'background-image': 'radial-gradient(circle, rgba(2, 0, 36, 0.03125) 0%, rgba(2, 0, 36, 0.11528361344537819) 4%, rgba(18, 18, 18, 1) 100%), url(https://image.tmdb.org/t/p/original/' + b.backdrop_path + ')' }"
       [ngClass]="{'active': i === currentIndex}">
 
+
+
       <div class="inform">
         <div class="title">
           <h1>{{b.original_title || b.original_name}}</h1>
@@ -15,7 +17,8 @@
         </div>
 
         <div class="btns">
-          <button class="trailer" (click)="trailer(b.id)">Watch trailer <i style="font-size: 16px;" class="fa-solid fa-play"></i></button>
+          <button class="trailer" (click)="trailer(b.id)">Watch trailer <i style="font-size: 16px;"
+              class="fa-solid fa-play"></i></button>
           <button class="detalis" (click)="detalis(b)">Detalis <i class="fa-solid fa-chevron-right"
               aria-hidden="true"></i></button>
         </div>
