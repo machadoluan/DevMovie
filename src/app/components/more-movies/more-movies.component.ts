@@ -43,4 +43,9 @@ export class MoreMoviesComponent implements OnInit {
       }
     })
   }
+
+  close(){
+    this.dialog.closeAll()
+    
+  }
 }

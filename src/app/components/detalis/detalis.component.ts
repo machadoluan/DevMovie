@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MovieApiService } from '../../service/movie-api.service';
+import { TrailerComponent } from '../trailer/trailer.component';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,7 +20,9 @@ import { MovieApiService } from '../../service/movie-api.service';
 export class DetalisComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private service: MovieApiService
+    private service: MovieApiService,
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog
   ) { }
 
   title: string = '';
@@ -26,7 +30,9 @@ export class DetalisComponent implements OnInit {
   banner: string = '';
   trailerKey: any;
   id: any;
-  casts: any[] = []
+  casts: any[] = [];
+  youtubeUrl: SafeResourceUrl = ''
+  photoDefault: boolean = false;
 
 
   ngOnInit(): void {
@@ -44,7 +50,14 @@ export class DetalisComponent implements OnInit {
 
       this.casts = result.cast;
 
-      console.log('cast', this.casts)
+      this.casts.forEach((element: any) => {
+        if (element.profile_path === null) {
+          element.profile_path = "user.jpg";
+        } else {
+          element.profile_path = `https://image.tmdb.org/t/p/original/${element.profile_path}`;
+        }
+      });
+
 
     })
   }
@@ -56,10 +69,15 @@ export class DetalisComponent implements OnInit {
       result.results.forEach((element: any) => {
         if (element.type === "Trailer") {
           this.trailerKey = element.key;
+          this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.trailerKey}?autoplay=1&mute=1`);
         }
       });
-      console.log(this.trailerKey)
-      window.open(`https://www.youtube.com/watch?v=${this.trailerKey}`, '_blank')
+      this.dialog.open(TrailerComponent, {
+        maxWidth: 1000,
+        data: {
+          youtubeUrl: this.youtubeUrl
+        }
+      })
     })
   }
 }

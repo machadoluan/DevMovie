@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
         this.movie = result.results
         console.log(this.movie)
         if (this.movie.length <= 0) {
-          this.errorSearch = `Erro ao encontrar: ${this.searchQuery}`
+          this.errorSearch = this.searchQuery;
         } else {
           this.errorSearch = ''
         }
@@ -49,6 +49,7 @@ export class SearchComponent implements OnInit {
       maxWidth: 800,
       maxHeight: 800,
       data: {
+        id: movie.id,
         banner: movie.backdrop_path,
         title: movie.title || movie.original_title,
         description: movie.overview

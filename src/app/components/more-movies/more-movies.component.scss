@@ -40,6 +40,7 @@
     gap: 2rem;
     flex-wrap: wrap;
     margin: 40px auto;
+    justify-content: center ;
 
     img {
       width: 100px;
@@ -51,5 +52,13 @@
         transform: scale(1.1);
       }
     }
+  }
+
+  .close{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    color: white;
   }
 }

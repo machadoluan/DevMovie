@@ -6,4 +6,8 @@
   <div class="movies">
     <img *ngFor="let b of movies" (click)="detalis(b)" src="https://image.tmdb.org/t/p/original/{{ b.poster_path}}" alt="">
   </div>
+
+  <div class="close" (click)="close()">
+    <i class="fa-solid fa-x"></i>
+  </div>
 </div>

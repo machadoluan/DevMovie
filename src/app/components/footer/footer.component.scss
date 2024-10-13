@@ -1,0 +1,36 @@
+footer {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    align-items: center;
+
+    .redes-footer {
+      display: flex;
+      font-size: 12px;
+      gap: 1rem;
+      margin-left: 100px;
+
+      a i {
+        font-size: 24px;
+        color: white;
+      }
+    }
+
+    img {
+      width: 100px;
+    }
+
+    .direitos{
+      p{
+        color: white;
+      }
+    }
+
+  }
+}

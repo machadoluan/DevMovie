@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-detalis">
   <div class="banner"
     [ngStyle]="{ 'background-image': 'radial-gradient(circle, rgba(2, 0, 36, 0.03125) 0%, rgba(2, 0, 36, 0.11528361344537819) 4%, rgba(18, 18, 18, 1) 100%), url(https://image.tmdb.org/t/p/original/' + banner + ')' }">
 
@@ -24,12 +24,18 @@
         {{description}}
       </span>
     </div>
+
     <div class="elenco">
       <h1>Elenco</h1>
 
-      <div class="dados" *ngFor="let elenco of casts">
-        <img src="https://image.tmdb.org/t/p/original/{{ elenco.profile_path}}" alt="">
-        {{elenco.name}}
+
+      <div class="card" >
+        <div class="content" *ngFor="let elenco of casts">
+          <img [src]="elenco.profile_path" class="card-img-top" alt="{{ elenco.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{elenco.name}}</h5>
+          </div>
+        </div>
       </div>
     </div>
   </main>

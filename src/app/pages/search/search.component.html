@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-search">
   <!-- <app-header></app-header> -->
 
   <div class="movies">
@@ -6,6 +6,8 @@
       class="image-movie" (click)="detalis(t)">
   </div>
 
-  <span>{{errorSearch}}</span>
+  <div class="error" *ngIf="errorSearch">
+    <span>Não conseguimos encontrar: "{{errorSearch}}".</span>
+  </div>
 
 </div>
