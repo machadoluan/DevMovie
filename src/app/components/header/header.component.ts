@@ -23,6 +23,7 @@ export class HeaderComponent {
   ) { }
 
   @HostListener('window:scroll', [])
+
   onWindowScroll() {
     // Pega a posição de scroll atual
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
